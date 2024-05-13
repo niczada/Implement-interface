@@ -1,0 +1,93 @@
+// Interface Veiculo
+public interface Veiculo {
+    void acelerar();
+    void frear();
+    String getDescricao();
+}
+
+// Classe Carro implementando a interface Veiculo
+public class Carro implements Veiculo {
+    private String descricao;
+
+    public Carro(String descricao) {
+        this.descricao = descricao;
+    }
+
+    @Override
+    public void acelerar() {
+        System.out.println("O carro está acelerando.");
+    }
+
+    @Override
+    public void frear() {
+        System.out.println("O carro está freando.");
+    }
+
+    @Override
+    public String getDescricao() {
+        return descricao;
+    }
+}
+
+// Classe Moto implementando a interface Veiculo
+public class Moto implements Veiculo {
+    private String descricao;
+
+    public Moto(String descricao) {
+        this.descricao = descricao;
+    }
+
+    @Override
+    public void acelerar() {
+        System.out.println("A moto está acelerando.");
+    }
+
+    @Override
+    public void frear() {
+        System.out.println("A moto está freando.");
+    }
+
+    @Override
+    public String getDescricao() {
+        return descricao;
+    }
+}
+
+// Classe LojaDeCarros
+import java.util.ArrayList;
+import java.util.List;
+
+public class LojaDeCarros {
+    private List<Veiculo> inventario;
+
+    public LojaDeCarros() {
+        this.inventario = new ArrayList<>();
+    }
+
+    public void adicionarVeiculo(Veiculo veiculo) {
+        inventario.add(veiculo);
+        System.out.println(veiculo.getDescricao() + " adicionado ao inventário.");
+    }
+
+    public void mostrarInventario() {
+        System.out.println("Inventário da Loja:");
+        for (Veiculo veiculo : inventario) {
+            System.out.println(veiculo.getDescricao());
+        }
+    }
+}
+
+// Exemplo de uso
+public class TesteLojaDeCarros {
+    public static void main(String[] args) {
+        LojaDeCarros loja = new LojaDeCarros();
+
+        Carro carro = new Carro("Toyota Corolla");
+        Moto moto = new Moto("Yamaha MT-07");
+
+        loja.adicionarVeiculo(carro);
+        loja.adicionarVeiculo(moto);
+
+        loja.mostrarInventario();
+    }
+}
